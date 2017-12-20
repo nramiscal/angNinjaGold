@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class GoldService {
+
+  myGold: BehaviorSubject<number> = new BehaviorSubject(0);
 
   totalGold: number = 0;
   gold: number;
@@ -32,6 +35,10 @@ export class GoldService {
   activities: string[] = [];
 
   constructor() { }
+
+  updateMyGold(newGold:number): void {
+      this.myGold.next(newGold);
+  }
 
   getLocations() {
       return this.locations;
@@ -65,6 +72,7 @@ export class GoldService {
       else {
           this.totalGold += this.gold;
       }
+      this.updateMyGold(this.totalGold);
       console.log(`TotalGold is now ${this.totalGold}`);
       if (this.winOrLose == "lose") {
           this.activities.push(`You've lost ${this.gold} gold at the ${name}. Total gold is now ${this.totalGold}.`);

@@ -16,7 +16,7 @@ export class LocationsComponent implements OnInit {
   }
 
   calcWinnings(name){
-      console.log(this._goldService.calculateTotalGold(name));
+      this._goldService.calculateTotalGold(name);
   }
 
 }

@@ -8,8 +8,14 @@ import {GoldService} from './gold.service';
 })
 export class AppComponent {
 
+  myGold: number;
   totalGold: number = this._goldService.getTotalGold();
 
   constructor(private _goldService: GoldService){}
 
+  ngOnInit(){
+      this._goldService.myGold.subscribe(
+          (newGold) => { this.myGold = newGold; }
+      );
+  }
 }

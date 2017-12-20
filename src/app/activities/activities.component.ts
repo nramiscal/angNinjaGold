@@ -12,8 +12,7 @@ export class ActivitiesComponent implements OnInit {
 
   constructor(private _goldService: GoldService) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 
 }
